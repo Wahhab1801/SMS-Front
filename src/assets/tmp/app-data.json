@@ -16,6 +16,23 @@
       "hideInBreadcrumb": true,
       "children": [
         {
+          "text": "Classes",
+          "i18n": "menu.class",
+          "icon": "anticon-dashboard",
+          "children": [
+            {
+              "text": "list",
+              "link": "/classes/list",
+              "i18n": "menu.class.list"
+            },
+            {
+              "text": "detail",
+              "link": "/classes/detail",
+              "i18n": "menu.class.detail"
+            }
+          ]
+        },
+        {
           "text": "仪表盘",
           "i18n": "menu.dashboard",
           "icon": "anticon-dashboard",
