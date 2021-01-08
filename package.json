@@ -1,16 +1,16 @@
 {
-  "name": "ng-alain",
+  "name": "sms-front",
   "version": "11.1.0",
   "description": "ng-zorro-antd admin panel front-end framework",
-  "author": "cipchk <cipchk@qq.com>",
+  "author": "Abdul Wahhab",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ng-alain/ng-alain.git"
+    "url": "https://github.com/Wahhab1801/SMS-Front.git"
   },
   "bugs": {
-    "url": "https://github.com/ng-alain/ng-alain/issues"
+    "url": "https://github.com/Wahhab1801/SMS-Front.git"
   },
-  "homepage": "https://ng-alain.com",
+  "homepage": "https://github.com/Wahhab1801/SMS-Front.git",
   "license": "MIT",
   "keywords": [
     "delon",
