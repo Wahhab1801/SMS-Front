@@ -100,7 +100,7 @@ export class ClassListComponent implements OnInit {
 
   add(tpl: TemplateRef<{}>): void {
     this.modalSrv.create({
-      nzTitle: '新建规则',
+      nzTitle: 'Add',
       nzContent: tpl,
       nzOnOk: () => {
         this.loading = true;

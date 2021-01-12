@@ -24,11 +24,6 @@
               "text": "list",
               "link": "/classes/list",
               "i18n": "menu.class.list"
-            },
-            {
-              "text": "detail",
-              "link": "/classes/detail",
-              "i18n": "menu.class.detail"
             }
           ]
         },

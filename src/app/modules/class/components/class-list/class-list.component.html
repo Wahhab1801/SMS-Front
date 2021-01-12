@@ -16,7 +16,7 @@
       </div>
     </div>
   </form>
-  <button nz-button [nzType]="'primary'">
+  <button nz-button [nzType]="'primary'" (click)="add(modalContent)">
     <i nz-icon nzType="plus"></i>
     <span>Add New</span>
   </button>
@@ -26,3 +26,6 @@
     </ng-template>
   </st>
 </nz-card>
+<ng-template #modalContent>
+  <app-class-detail></app-class-detail>
+</ng-template>
