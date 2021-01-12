@@ -27,5 +27,5 @@
   </st>
 </nz-card>
 <ng-template #modalContent>
-  <app-class-detail></app-class-detail>
+  <app-class-detail [class]="selectedClass" (save)="onClassSave()" (cancel)="onClassCancel()"></app-class-detail>
 </ng-template>

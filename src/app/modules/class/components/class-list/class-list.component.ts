@@ -6,6 +6,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { map, tap } from 'rxjs/operators';
 import { ClassService } from '../../services/class.service';
+import Class from '../../models/class.model';
 
 @Component({
   selector: 'app-class-list',
@@ -13,6 +14,8 @@ import { ClassService } from '../../services/class.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClassListComponent implements OnInit {
+  selectedClass: Class;
+
   q: {
     pi: number;
     ps: number;
@@ -111,5 +114,15 @@ export class ClassListComponent implements OnInit {
   reset(): void {
     // wait form reset updated finished
     setTimeout(() => this.getData());
+  }
+
+  onClassCancel() {
+    this.selectedClass = null;
+    console.log('cancel received');
+  }
+
+  onClassSave() {
+    this.selectedClass = null;
+    console.log('save received');
   }
 }
