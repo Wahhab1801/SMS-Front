@@ -17,6 +17,7 @@ const routes: Routes = [
       ////// start
 
       { path: 'classes', loadChildren: () => import('../modules/class/class.module').then((m) => m.ClassModule) },
+      // { path: 'students', loadChildren: () => import('../modules/students/students.module').then((m) => m.StudentModule) },
 
       ////// end.
 

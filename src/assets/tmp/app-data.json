@@ -27,6 +27,19 @@
             }
           ]
         },
+
+        {
+          "text": "Studnets",
+          "i18n": "menu.student",
+          "icon": "anticon-dashboard",
+          "children": [
+            {
+              "text": "list",
+              "link": "/students/list",
+              "i18n": "menu.students.list"
+            }
+          ]
+        },
         {
           "text": "仪表盘",
           "i18n": "menu.dashboard",
