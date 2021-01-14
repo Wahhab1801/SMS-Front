@@ -1,21 +1,20 @@
 import { Platform } from '@angular/cdk/platform';
 import { ChangeDetectionStrategy, Component, OnInit, ChangeDetectorRef, Input, Output, EventEmitter } from '@angular/core';
-import { _HttpClient } from '@delon/theme';
 import { FormGroup, FormBuilder, Validators, AbstractControl, FormArray } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import Class from '../../models/class.model';
+import Student from '../../models/student.model';
 
 @Component({
-  selector: 'app-class-detail',
-  templateUrl: './class-detail.component.html',
+  selector: 'app-student-detail',
+  templateUrl: './student-detail.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ClassDetailComponent implements OnInit {
+export class StudentDetailComponent implements OnInit {
   form!: FormGroup;
   submitting = false;
 
-  @Input() class: Class;
-  @Output() save = new EventEmitter<Class>();
+  @Input() student: Student;
+  @Output() save = new EventEmitter<Student>();
   @Output() cancel = new EventEmitter();
 
   constructor(private fb: FormBuilder, private msg: NzMessageService, private cdr: ChangeDetectorRef) {}
@@ -42,7 +41,7 @@ export class ClassDetailComponent implements OnInit {
       this.cdr.detectChanges();
     }, 1000);
     console.log('save called');
-    this.save.emit(this.class);
+    this.save.emit(this.student);
   }
 
   onCancelClick() {

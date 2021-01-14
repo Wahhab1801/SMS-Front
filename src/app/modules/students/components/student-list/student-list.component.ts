@@ -4,9 +4,8 @@ import { _HttpClient } from '@delon/theme';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
-import { map, tap } from 'rxjs/operators';
-import { ClassService } from '../../services/student.service';
-import Class from '../../models/student.model';
+import { StudentService } from '../../services/student.service';
+import Student from '../../models/student.model';
 
 @Component({
   selector: 'app-class-list',
@@ -14,7 +13,7 @@ import Class from '../../models/student.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StudentListComponent implements OnInit {
-  selectedClass: Class;
+  selectedStudent: Student;
 
   q: {
     pi: number;
@@ -63,7 +62,7 @@ export class StudentListComponent implements OnInit {
   expandForm = false;
 
   constructor(
-    private classService: ClassService,
+    private studentService: StudentService,
     public msg: NzMessageService,
     private modalSrv: NzModalService,
     private cdr: ChangeDetectorRef,
@@ -75,7 +74,7 @@ export class StudentListComponent implements OnInit {
 
   getData(): void {
     this.loading = true;
-    this.classService.getAllClasses(this.q).subscribe((res) => {
+    this.studentService.getAll(this.q).subscribe((res) => {
       this.data = res;
       this.loading = false;
       this.cdr.detectChanges();
@@ -116,13 +115,13 @@ export class StudentListComponent implements OnInit {
     setTimeout(() => this.getData());
   }
 
-  onClassCancel() {
-    this.selectedClass = null;
+  onStudentCancel() {
+    this.selectedStudent = null;
     console.log('cancel received');
   }
 
-  onClassSave() {
-    this.selectedClass = null;
+  onStudentSave() {
+    this.selectedStudent = null;
     console.log('save received');
   }
 }

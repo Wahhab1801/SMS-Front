@@ -12,7 +12,7 @@ import { AppConstants } from '../../../app.constants';
 export class StudentService {
   constructor(private httpClient: HttpClient) {}
 
-  getAllClasses(query?: any): Observable<Student[]> {
+  getAll(query?: any): Observable<Student[]> {
     const queryParams = [];
     query.name && queryParams.push(`name=${query.name}`);
     const requestUrl = `${AppConstants.API_URL}classes?${queryParams.join('&')}`;
