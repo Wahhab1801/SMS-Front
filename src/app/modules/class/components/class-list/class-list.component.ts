@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { STChange, STColumn, STComponent, STData } from '@delon/abc/st';
+import { STChange, STColumn, STComponent, STData, STDataSource } from '@delon/abc/st';
+import { ModalHelper } from '@delon/theme';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
@@ -32,13 +33,13 @@ export class ClassListComponent implements OnInit {
     campusName: '',
     statusList: [],
   };
-  data: any[] = [];
+  data: Class[] = [];
   loading = false;
   @ViewChild('st', { static: true })
   st!: STComponent;
   columns: STColumn[] = [
     {
-      title: '编号',
+      title: '',
       index: 'id',
       type: 'checkbox',
     },
@@ -59,7 +60,27 @@ export class ClassListComponent implements OnInit {
             component: ClassDetailComponent,
             paramsName: 'class',
           },
-          click: (_record, modal) => this.msg.success(`重新加载页面，回传值：${JSON.stringify(modal)}`),
+          // click: (record) => {
+          //   this.modalHelper.create(ClassDetailComponent, { record: { a: 1, b: '2', c: new Date() } }).subscribe(res => {
+          //     this.msg.info(res);
+          //   });
+          // }
+        },
+        {
+          text: '',
+          icon: 'delete',
+          type: 'del',
+          pop: {
+            title: 'Are you sure?',
+            okType: 'danger',
+            icon: 'star',
+          },
+          click: (record, _modal, comp) => {
+            this.classService.delete(record.id).subscribe((data) => {
+              this.msg.success(`Successfully Deleted ${data.name}】`);
+              comp!.removeRow(record);
+            });
+          },
         },
       ],
     },
@@ -73,6 +94,7 @@ export class ClassListComponent implements OnInit {
     public msg: NzMessageService,
     private modalSrv: NzModalService,
     private cdr: ChangeDetectorRef,
+    private modalHelper: ModalHelper,
   ) {}
 
   ngOnInit(): void {
@@ -103,7 +125,7 @@ export class ClassListComponent implements OnInit {
   remove(): void {}
 
   approval(): void {
-    this.msg.success(`审批了 ${this.selectedRows.length} 笔`);
+    this.msg.success(` ${this.selectedRows.length}`);
   }
 
   add(tpl: TemplateRef<{}>): void {
@@ -117,7 +139,6 @@ export class ClassListComponent implements OnInit {
   }
 
   reset(): void {
-    // wait form reset updated finished
     setTimeout(() => this.getData());
   }
 
@@ -127,7 +148,7 @@ export class ClassListComponent implements OnInit {
   }
 
   onClassSave(savedClass: Class) {
-    this.selectedClass = null;
+    this.getData();
     console.log('save received');
   }
 }

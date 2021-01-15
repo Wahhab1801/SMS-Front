@@ -22,7 +22,7 @@ const routes: Routes = [
 
       ////// end.
 
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: '', redirectTo: 'classes', pathMatch: 'full' },
       { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then((m) => m.DashboardModule) },
       {
         path: 'widgets',

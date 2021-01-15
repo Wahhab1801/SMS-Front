@@ -2,8 +2,10 @@
   <se label="Class Name" error="Please enter class name" required>
     <input nz-input formControlName="name" placeholder="enter class name" />
   </se>
-  <se label="Class ID" error="please enter campus" required>
-    <input nz-input formControlName="campusId" placeholder="Enter Class ID" />
+  <se label="Campus" error="please enter campus" required>
+    <nz-select formControlName="campusId" [nzPlaceHolder]="'Select Campus'" [nzShowSearch]="true">
+      <nz-option *ngFor="let i of campuses" [nzLabel]="i.name" [nzValue]="i.id"></nz-option>
+    </nz-select>
   </se>
   <se>
     <button nz-button nzType="primary" [disabled]="form.invalid" type="submit" [nzLoading]="submitting">Submit</button>

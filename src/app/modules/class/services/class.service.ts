@@ -22,4 +22,31 @@ export class ClassService {
       }),
     );
   }
+
+  save(newClass: Class): Observable<Class> {
+    const requestUrl = `${AppConstants.API_URL}classes`;
+    return this.httpClient.post<Class>(requestUrl, newClass).pipe(
+      map((response) => {
+        return response;
+      }),
+    );
+  }
+
+  update(updatedClass: Class, id: string): Observable<Class> {
+    const requestUrl = `${AppConstants.API_URL}classes/${id}`;
+    return this.httpClient.put<Class>(requestUrl, updatedClass).pipe(
+      map((response) => {
+        return response;
+      }),
+    );
+  }
+
+  delete(id: string): Observable<Class> {
+    const requestUrl = `${AppConstants.API_URL}classes/${id}`;
+    return this.httpClient.delete<Class>(requestUrl).pipe(
+      map((response) => {
+        return response;
+      }),
+    );
+  }
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../shared';
+import { CampusService } from './services/Campus.service';
 
 const COMPONENTS = [];
 

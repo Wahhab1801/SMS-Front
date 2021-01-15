@@ -1,5 +1,5 @@
 export default class Class {
-  id: string;
+  id?: string;
   name: string;
   campusId: string;
   // TODO: need to add 'campusName' in get api response.
