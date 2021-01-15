@@ -37,6 +37,33 @@
               "text": "list",
               "link": "/students/list",
               "i18n": "menu.students.list"
+            },
+            {
+              "text": "grades",
+              "link": "/students/grades",
+              "i18n": "menu.students.grades"
+            },
+            {
+              "text": "activities",
+              "link": "/students/activities",
+              "i18n": "menu.students.activities"
+            }
+          ]
+        },
+        {
+          "text": "Fee",
+          "i18n": "menu.fee",
+          "icon": "anticon-dashboard",
+          "children": [
+            {
+              "text": "list",
+              "link": "/fee/list",
+              "i18n": "menu.fee.list"
+            },
+            {
+              "text": "voucher",
+              "link": "/fee/voucher",
+              "i18n": "menu.fee.voucher"
             }
           ]
         },

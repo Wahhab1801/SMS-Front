@@ -6,10 +6,17 @@
   "menu.lang": "Language",
   "menu.main": "Main Navigation",
 
-  "menu.class": "class",
+  "menu.class": "Classes",
   "menu.class.list": "List",
-  "menu.student":"student",
+
+  "menu.student":"Student",
   "menu.students.list":"List",
+  "menu.students.grades":"Grade",
+  "menu.students.activities":"Activities",
+
+  "menu.fee":"Fee",
+  "menu.fee.list":"List",
+  "menu.fee.voucher":"Voucher",
 
   "menu.dashboard": "Dashboard",
   "menu.dashboard.v1": "Default",

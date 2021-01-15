@@ -18,6 +18,7 @@ const routes: Routes = [
 
       { path: 'classes', loadChildren: () => import('../modules/class/class.module').then((m) => m.ClassModule) },
       { path: 'students', loadChildren: () => import('../modules/students/student.module').then((m) => m.StudentModule) },
+      { path: 'fee', loadChildren: () => import('../modules/Fee/fee.module').then((m) => m.FeeModule) },
 
       ////// end.
 
@@ -31,6 +32,7 @@ const routes: Routes = [
       { path: 'delon', loadChildren: () => import('./delon/delon.module').then((m) => m.DelonModule) },
       { path: 'extras', loadChildren: () => import('./extras/extras.module').then((m) => m.ExtrasModule) },
       { path: 'pro', loadChildren: () => import('./pro/pro.module').then((m) => m.ProModule) },
+      //  { path: 'finance', loadChildren: () => import('./finance/finance.module').then((m) => m.FinanceModule) },{ path: 'finance', loadChildren: () => import('./finance/finance.module').then((m) => m.FinanceModule) },
     ],
   },
   // Blak Layout 空白布局

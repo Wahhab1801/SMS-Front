@@ -1,0 +1,21 @@
+<form nz-form [formGroup]="form" (ngSubmit)="submit()" se-container="1" labelWidth="200">
+  <se label="Class Name" error="Please enter class name" required>
+    <input nz-input formControlName="title" placeholder="enter class name" />
+  </se>
+  <se label="Class ID" error="please enter class ID" required>
+    <input nz-input formControlName="invites" placeholder="Enter Class ID" />
+  </se>
+  <se label="Teachers Name" error="please enter teachers name" required>
+    <input nz-input formControlName="invites" placeholder="Enter Teachers Name" />
+  </se>
+  <se label="Term" error="Please enter title" required>
+    <nz-range-picker formControlName="date"></nz-range-picker>
+  </se>
+  <se label="Description" error="please enter description" required>
+    <textarea nz-input formControlName="goal" [nzAutosize]="{ minRows: 4 }" placeholder="Enter details"></textarea>
+  </se>
+  <se>
+    <button nz-button nzType="primary" [disabled]="form.invalid" type="submit" [nzLoading]="submitting">Submit</button>
+    <button nz-button class="ml-sm">Save</button>
+  </se>
+</form>
