@@ -1,12 +1,11 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { STChange, STColumn, STComponent, STData } from '@delon/abc/st';
-import { _HttpClient } from '@delon/theme';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
-import { map, tap } from 'rxjs/operators';
 import { ClassService } from '../../services/class.service';
 import Class from '../../models/class.model';
+import { ClassDetailComponent } from '../class-detail/class-detail.component';
 
 @Component({
   selector: 'app-class-list',
@@ -35,31 +34,38 @@ export class ClassListComponent implements OnInit {
   };
   data: any[] = [];
   loading = false;
-  status = [
-    { index: 0, text: 'default', value: false, type: 'default', checked: false },
-    {
-      index: 1,
-      text: 'processing',
-      value: false,
-      type: 'processing',
-      checked: false,
-    },
-    { index: 2, text: 'success', value: false, type: 'success', checked: false },
-    { index: 3, text: 'error', value: false, type: 'error', checked: false },
-  ];
   @ViewChild('st', { static: true })
   st!: STComponent;
   columns: STColumn[] = [
+    {
+      title: '编号',
+      index: 'id',
+      type: 'checkbox',
+    },
     { title: 'Name', index: 'name' },
     { title: 'Campus Name', index: 'campusName' },
     {
       title: 'Enabled',
       index: 'isDeleted',
     },
+    {
+      title: '',
+      buttons: [
+        {
+          text: '',
+          icon: 'edit',
+          type: 'modal',
+          modal: {
+            component: ClassDetailComponent,
+            paramsName: 'class',
+          },
+          click: (_record, modal) => this.msg.success(`重新加载页面，回传值：${JSON.stringify(modal)}`),
+        },
+      ],
+    },
   ];
   selectedRows: STData[] = [];
   description = '';
-  totalCallNo = 0;
   expandForm = false;
 
   constructor(
@@ -86,7 +92,6 @@ export class ClassListComponent implements OnInit {
     switch (e.type) {
       case 'checkbox':
         this.selectedRows = e.checkbox!;
-        this.totalCallNo = this.selectedRows.reduce((total, cv) => total + cv.callNo, 0);
         this.cdr.detectChanges();
         break;
       case 'filter':
@@ -121,7 +126,7 @@ export class ClassListComponent implements OnInit {
     console.log('cancel received');
   }
 
-  onClassSave() {
+  onClassSave(savedClass: Class) {
     this.selectedClass = null;
     console.log('save received');
   }

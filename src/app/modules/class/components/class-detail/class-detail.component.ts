@@ -22,23 +22,24 @@ export class ClassDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      title: [null, [Validators.required]],
-      date: [null, [Validators.required]],
-      goal: [null, [Validators.required]],
-      standard: [null, [Validators.required]],
-      client: [null, []],
-      invites: [null, []],
-      weight: [null, []],
-      public: [1, [Validators.min(1), Validators.max(3)]],
-      publicUsers: [null, []],
+      id: [null, [Validators.required]],
+      name: [null, [Validators.required]],
+      campusId: [null, [Validators.required]],
     });
+    if (this.class) {
+      this.form.setValue({
+        id: this.class.id,
+        name: this.class.name,
+        campusId: this.class.campusId,
+      });
+    }
   }
 
   submit(): void {
     this.submitting = true;
     setTimeout(() => {
       this.submitting = false;
-      this.msg.success(`提交成功`);
+      this.msg.success(`saved`);
       this.cdr.detectChanges();
     }, 1000);
     console.log('save called');

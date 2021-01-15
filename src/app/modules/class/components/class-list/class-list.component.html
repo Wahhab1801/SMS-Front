@@ -20,11 +20,7 @@
     <i nz-icon nzType="plus"></i>
     <span>Add New</span>
   </button>
-  <st #st [columns]="columns" [data]="data" [loading]="loading" (change)="stChange($event)">
-    <ng-template st-row="status" let-i>
-      <nz-badge [nzStatus]="i.statusType" [nzText]="i.statusText"></nz-badge>
-    </ng-template>
-  </st>
+  <st #st [columns]="columns" [data]="data" [loading]="loading" (change)="stChange($event)"> </st>
 </nz-card>
 <ng-template #modalContent>
   <app-class-detail [class]="selectedClass" (save)="onClassSave()" (cancel)="onClassCancel()"></app-class-detail>
