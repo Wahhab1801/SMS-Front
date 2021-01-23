@@ -6,6 +6,9 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { StudentService } from '../../services/student.service';
 import Student from '../../models/student.model';
+import { StudentDetailComponent } from '../student-detail/student-detail.component';
+import { StudentProfileComponent } from '../student-profile/student-profile.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-class-list',
@@ -32,28 +35,65 @@ export class StudentListComponent implements OnInit {
     campusName: '',
     statusList: [],
   };
-  data: any[] = [];
+  data: Student[] = [];
   loading = false;
-  status = [
-    { index: 0, text: 'default', value: false, type: 'default', checked: false },
-    {
-      index: 1,
-      text: 'processing',
-      value: false,
-      type: 'processing',
-      checked: false,
-    },
-    { index: 2, text: 'success', value: false, type: 'success', checked: false },
-    { index: 3, text: 'error', value: false, type: 'error', checked: false },
-  ];
   @ViewChild('st', { static: true })
   st!: STComponent;
   columns: STColumn[] = [
+    {
+      title: '',
+      index: 'id',
+      type: 'checkbox',
+    },
     { title: 'Name', index: 'name' },
     { title: 'Campus Name', index: 'campusName' },
     {
       title: 'Enabled',
       index: 'isDeleted',
+    },
+    {
+      title: '',
+      buttons: [
+        {
+          text: '',
+          icon: 'edit',
+          type: 'modal',
+          modal: {
+            component: StudentDetailComponent,
+            paramsName: 'student',
+          },
+          //  click: (record) => {
+          //    this.modalHelper.create(ClassDetailComponent, { record: { a: 1, b: '2', c: new Date() } }).subscribe(res => {
+          //      this.msg.info(res);
+          //    });
+          //  }
+        },
+        {
+          text: '',
+          icon: 'delete',
+          type: 'del',
+          pop: {
+            title: 'Are you sure?',
+            okType: 'danger',
+            icon: 'star',
+          },
+          click: (record, _modal, comp) => {
+            this.studentService.delete(record.id).subscribe((data) => {
+              this.msg.success(`Successfully Deleted ${data.name}】`);
+              comp!.removeRow(record);
+            });
+          },
+        },
+        {
+          text: '',
+          icon: 'eye',
+          type: 'link',
+
+          click: (record) => {
+            this.router.navigate(['students/profile']);
+          },
+        },
+      ],
     },
   ];
   selectedRows: STData[] = [];
@@ -66,6 +106,7 @@ export class StudentListComponent implements OnInit {
     public msg: NzMessageService,
     private modalSrv: NzModalService,
     private cdr: ChangeDetectorRef,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {

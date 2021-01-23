@@ -12,6 +12,7 @@ import Student from '../../models/student.model';
 export class StudentDetailComponent implements OnInit {
   form!: FormGroup;
   submitting = false;
+  gender: string[] = ['Male', 'Female'];
 
   @Input() student: Student;
   @Output() save = new EventEmitter<Student>();

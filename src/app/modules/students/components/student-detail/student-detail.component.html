@@ -1,18 +1,35 @@
 <form nz-form [formGroup]="form" (ngSubmit)="submit()" se-container="1" labelWidth="200">
-  <se label="Class Name" error="Please enter class name" required>
+  <se label="First Name" error="Please enter First name" required>
     <input nz-input formControlName="title" placeholder="enter class name" />
   </se>
-  <se label="Class ID" error="please enter class ID" required>
-    <input nz-input formControlName="invites" placeholder="Enter Class ID" />
+  <se label="Middle Name" error="Please enter middle name" required>
+    <input nz-input formControlName="title" placeholder="enter class name" />
   </se>
-  <se label="Teachers Name" error="please enter teachers name" required>
-    <input nz-input formControlName="invites" placeholder="Enter Teachers Name" />
+  <se label="Last Name" error="Please enter last name" required>
+    <input nz-input formControlName="title" placeholder="enter class name" />
   </se>
-  <se label="Term" error="Please enter title" required>
-    <nz-range-picker formControlName="date"></nz-range-picker>
+  <se label="Fathers Name" error="Please enter fathers name" required>
+    <input nz-input formControlName="title" placeholder="enter class name" />
   </se>
-  <se label="Description" error="please enter description" required>
-    <textarea nz-input formControlName="goal" [nzAutosize]="{ minRows: 4 }" placeholder="Enter details"></textarea>
+  <se label="Mothers Name" error="Please enter mothers name" required>
+    <input nz-input formControlName="title" placeholder="enter class name" />
+  </se>
+  <se label="Gender" error="please enter gender" required>
+    <nz-select formControlName="gender" [nzPlaceHolder]="'Select Gender'" [nzShowSearch]="false">
+      <nz-option *ngFor="let i of gender" [nzValue]="i"></nz-option>
+    </nz-select>
+  </se>
+  <se label="Date Of Birth" error="Please enter DOB" required>
+    <nz-date-picker formControlName="date"></nz-date-picker>
+  </se>
+  <se label="Password" error="Please enter Password" required>
+    <input nz-input formControlName="title" placeholder="enter password" />
+  </se>
+  <se label="Address" error="Please enter Address" required>
+    <input nz-input formControlName="title" placeholder="enter address" />
+  </se>
+  <se label="EmailAddress" error="Please enter email address" required>
+    <input nz-input formControlName="title" type="email" placeholder="enter email address" />
   </se>
   <se>
     <button nz-button nzType="primary" [disabled]="form.invalid" type="submit" [nzLoading]="submitting">Submit</button>

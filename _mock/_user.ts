@@ -51,53 +51,53 @@ export const USERS = {
   '/user/:id': (req: MockRequest) => list.find((w) => w.id === +req.params.id),
   'POST /user/:id': (req: MockRequest) => saveData(+req.params.id, req.body),
   '/user/current': {
-    name: 'Cipchk',
+    name: 'Abdul Wahhab',
     avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
     userid: '00000001',
-    email: 'cipchk@qq.com',
-    signature: '海纳百川，有容乃大',
-    title: '交互专家',
-    group: '蚂蚁金服－某某某事业群－某某平台部－某某技术部－UED',
+    email: 'abdul.wahhab1801@gmail.com',
+    signature: 'BSCS，IBA',
+    title: '8 Semester Student',
+    group: 'Final Year Project SMS',
     tags: [
       {
         key: '0',
-        label: '很有想法的',
+        label: 'Data Science',
       },
       {
         key: '1',
-        label: '专注撩妹',
+        label: 'Angular',
       },
       {
         key: '2',
-        label: '帅~',
+        label: 'Front-end',
       },
       {
         key: '3',
-        label: '通吃',
+        label: 'Software Developer',
       },
       {
         key: '4',
-        label: '专职后端',
+        label: 'Student',
       },
       {
         key: '5',
-        label: '海纳百川',
+        label: 'Artist',
       },
     ],
     notifyCount: 12,
-    country: 'China',
+    country: 'Pakistan',
     geographic: {
       province: {
-        label: '上海',
+        label: 'Sindh',
         key: '330000',
       },
       city: {
-        label: '市辖区',
+        label: 'Karachi',
         key: '330100',
       },
     },
-    address: 'XX区XXX路 XX 号',
-    phone: '你猜-你猜你猜猜猜',
+    address: 'IBA Boys Hostel',
+    phone: '0332-00000000',
   },
   'POST /user/avatar': 'ok',
   'POST /login/account': (req: MockRequest) => {
@@ -110,7 +110,7 @@ export const USERS = {
       user: {
         token: '123456789',
         name: data.userName,
-        email: `${data.userName}@qq.com`,
+        email: `${data.userName}@khi.iba.edu.pk`,
         id: 10000,
         time: +new Date(),
       },

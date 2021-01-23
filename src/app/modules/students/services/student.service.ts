@@ -15,8 +15,16 @@ export class StudentService {
   getAll(query?: any): Observable<Student[]> {
     const queryParams = [];
     query.name && queryParams.push(`name=${query.name}`);
-    const requestUrl = `${AppConstants.API_URL}classes?${queryParams.join('&')}`;
+    const requestUrl = `${AppConstants.API_URL}students?${queryParams.join('&')}`;
     return this.httpClient.get<Student[]>(requestUrl).pipe(
+      map((response) => {
+        return response;
+      }),
+    );
+  }
+  delete(id: string): Observable<Student> {
+    const requestUrl = `${AppConstants.API_URL}classes/${id}`;
+    return this.httpClient.delete<Student>(requestUrl).pipe(
       map((response) => {
         return response;
       }),

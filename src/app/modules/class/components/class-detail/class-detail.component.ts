@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, OnInit, ChangeDetectorRef, Input, O
 import { FormGroup, FormBuilder, Validators, AbstractControl, FormArray } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import Class from '../../models/class.model';
-import { CampusService } from '../../../campus/services/Campus.service';
+import { CampusService } from '../../../campus/services/campus.service';
 import Campus from '../../../campus/models/campus.model';
 import { ClassService } from '../../services/class.service';
 import { Mode } from '../../../../shared/utils/utils';
