@@ -1,11 +1,12 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ActivationEnd, Router } from '@angular/router';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, ActivationEnd, Router } from '@angular/router';
 import { _HttpClient } from '@delon/theme';
 import { Subscription, zip } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { StudentActivitiesComponent } from './activities/student-activities.component';
 import { StudentGradesComponent } from './grades/student-grades.component';
 import Student from '../../models/student.model';
+import { StudentService } from '../../services/student.service';
 
 @Component({
   selector: 'app-student-profile',
@@ -14,11 +15,19 @@ import Student from '../../models/student.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StudentProfileComponent implements OnInit, OnDestroy {
-  constructor(private router: Router, private http: _HttpClient, private cdr: ChangeDetectorRef) {}
   private router$!: Subscription;
+  private studentService: StudentService;
+
+  @Input() class: Student;
+
+  constructor(private route: ActivatedRoute, private router: Router, private http: _HttpClient, private cdr: ChangeDetectorRef) {
+    this.route.params.subscribe((params) => console.log(params));
+    this.route.params.subscribe((params) => this.studentService.getAll());
+  }
   @ViewChild('tagInput', { static: false }) private tagInput!: ElementRef<HTMLInputElement>;
   user: any;
   notice: any;
+  //selectedStudent: any;
 
   tabs = [
     {
